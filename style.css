@@ -1,0 +1,156 @@
+/* กำหนดตัวแปรสีและค่าพื้นฐาน */
+:root {
+    --primary: #2563eb;
+    --primary-hover: #1d4ed8;
+    --success: #16a34a;
+    --success-hover: #15803d;
+    --warning: #eab308;
+    --danger: #dc2626;
+    --bg-color: #f3f4f6;
+    --card-bg: #ffffff;
+    --text-main: #1f2937;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    margin: 0;
+    padding: 0;
+}
+
+/* Navbar */
+.navbar {
+    background-color: var(--card-bg);
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.navbar h1 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: var(--primary);
+}
+
+/* Container & Layout */
+.container {
+    max-w-width: 1200px;
+    margin: 20px auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.grid-2 {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+@media (min-width: 768px) {
+    .grid-2 {
+        grid-template-columns: 1fr 2fr;
+    }
+}
+
+.dashboard-hidden {
+    display: none;
+}
+
+/* Cards */
+.card {
+    background-color: var(--card-bg);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.card h2 {
+    margin-top: 0;
+    border-bottom: 2px solid var(--bg-color);
+    padding-bottom: 10px;
+}
+
+/* Forms & Inputs */
+.form-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+.form-group input {
+    flex: 1;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.flex-input {
+    display: flex;
+    gap: 10px;
+}
+
+/* Buttons */
+button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    color: white;
+    transition: 0.2s;
+}
+.btn-primary { background-color: var(--primary); }
+.btn-primary:hover { background-color: var(--primary-hover); }
+.btn-success { background-color: var(--success); }
+.btn-success:hover { background-color: var(--success-hover); }
+.btn-warning { background-color: var(--warning); }
+.btn-danger { background-color: var(--danger); }
+.btn-secondary { background-color: #6b7280; }
+
+.w-full { width: 100%; }
+.mt-2 { margin-top: 10px; }
+
+/* Utilities */
+.note { font-size: 0.85rem; color: var(--danger); margin-top: -5px; }
+.badge { background: #e5e7eb; padding: 3px 8px; border-radius: 12px; font-size: 0.85rem; }
+.address-text { font-size: 0.85rem; word-break: break-all; }
+.text-center { text-align: center; }
+
+/* Milestone Item */
+.milestone-item {
+    border: 1px solid #e5e7eb;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    background-color: #f9fafb;
+}
+.milestone-header {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.milestone-status {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    font-size: 0.9rem;
+    color: #4b5563;
+    gap: 5px;
+    margin-bottom: 15px;
+}
+.milestone-actions {
+    display: flex;
+    gap: 10px;
+}
+.milestone-actions button {
+    flex: 1;
+    font-size: 0.8rem;
+}

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InnovateFund - Web3 Crowdfunding</title>
+    <!-- ลิงก์ไฟล์ CSS ที่แยกไว้ -->
+    <link rel="stylesheet" href="style.css">
+    <!-- โหลด Ethers.js สำหรับเชื่อมต่อ Blockchain -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/6.13.0/ethers.umd.min.js"></script>
+</head>
+<body>
+    <header class="navbar">
+        <h1>🚀 InnovateFund Platform</h1>
+        <button id="connectBtn" onclick="connectWallet()">เชื่อมต่อ MetaMask</button>
+    </header>
+
+    <main class="container">
+        <!-- ส่วนที่ 1: ระบบสร้างโครงการใหม่ -->
+        <section class="card create-section">
+            <h2>➕ สร้างโครงการระดมทุนใหม่</h2>
+            <div class="form-group">
+                <input type="text" id="newTitle" placeholder="ชื่อโครงการ (เช่น Smart AI Hub)">
+                <input type="number" id="newTarget" placeholder="เป้าหมาย (ETH)">
+                <input type="number" id="newDuration" placeholder="ระยะเวลา (นาที สำหรับทดสอบ)">
+            </div>
+            <div class="form-group">
+                <input type="text" id="newMilestoneNames" placeholder="ชื่องานแต่ละเฟส คั่นด้วยลูกน้ำ (เช่น เฟส 1, เฟส 2)">
+                <input type="text" id="newMilestoneAmounts" placeholder="ยอดเงินแต่ละเฟส คั่นด้วยลูกน้ำ (เช่น 1, 1)">
+            </div>
+            <p class="note">*หมายเหตุ: ยอดเงินรวมแต่ละเฟส ต้องเท่ากับเป้าหมาย (ETH)</p>
+            <button class="btn-primary w-full" onclick="createNewCampaign()">สร้างโครงการ (Create Campaign)</button>
+        </section>
+
+        <!-- ส่วนที่ 2: รายการโครงการที่มีอยู่ในระบบ -->
+        <section class="card list-section">
+            <h2>📂 โครงการในระบบ</h2>
+            <select id="campaignSelector" onchange="selectCampaign()">
+                <option value="">-- กรุณาเลือกโครงการ --</option>
+            </select>
+            <button class="btn-secondary w-full mt-2" onclick="loadCampaignsList()">รีเฟรชรายชื่อโครงการ</button>
+        </section>
+
+        <!-- ส่วนที่ 3: จัดการและแสดงข้อมูลโครงการที่เลือก -->
+        <div id="campaignDashboard" class="dashboard-hidden">
+            <div class="grid-2">
+                <section class="card detail-section">
+                    <h2>📊 ข้อมูลโครงการ</h2>
+                    <p><strong>ชื่อโครงการ:</strong> <span id="campaignTitle">-</span></p>
+                    <p><strong>สถานะ:</strong> <span id="campaignStatus" class="badge">-</span></p>
+                    <p><strong>เป้าหมาย:</strong> <span id="targetAmount">-</span> ETH</p>
+                    <p><strong>ระดมทุนได้:</strong> <span id="currentRaised">-</span> ETH</p>
+                    <p><strong>ยอดที่คุณลงทุน:</strong> <span id="myBalance">-</span> ETH</p>
+                    <p class="address-text"><strong>เจ้าของ:</strong> <span id="ownerAddress">-</span></p>
+                    
+                    <hr>
+                    
+                    <h3>💰 สมทบทุน (Back Project)</h3>
+                    <div class="flex-input">
+                        <input type="number" id="contributeAmount" placeholder="จำนวน ETH">
+                        <button class="btn-success" onclick="backProject()">สมทบทุน</button>
+                    </div>
+
+                    <hr>
+                    
+                    <h3>⚙️ จัดการระบบ (System Admin)</h3>
+                    <button class="btn-warning w-full" onclick="checkFundingGoal()">อัปเดตสถานะหมดเวลา (Check Goal)</button>
+                    <button class="btn-danger w-full mt-2" onclick="refundBacker()">ขอเงินคืน (Refund)</button>
+                </section>
+
+                <section class="card milestone-section">
+                    <h2>📋 ระยะงาน (Milestones)</h2>
+                    <div id="milestonesContainer">
+                        <p class="text-center">เลือกโครงการเพื่อดู Milestone</p>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
